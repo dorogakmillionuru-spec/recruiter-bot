@@ -85,6 +85,11 @@ export default async function handler(req, res) {
     const firstName = message.from?.first_name || "";
     const username = message.from?.username || "";
     const text = (message.text || "").trim();
+
+    if (text === "/start") {
+  await sendMessage(chatId, "Я здесь. Напиши, что у тебя происходит.");
+  return res.status(200).send("ok");
+}
     
 const startPayload = text.startsWith("/start") 
   ? text.replace("/start", "").trim() 
