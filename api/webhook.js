@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
     }
 
     const payment = event.object || {};
-    const chatId = String(payment.metadata?.chatId || "").trim();
+    const chatId = String((payment.metadata && payment.metadata.chatId) || "").trim();
 
     if (!chatId) {
       return res.status(200).send("ok");
@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
 
     await sendTelegramMessage(
       chatId,
-  text: "Вижу, оплата прошла ✅\nТеперь можно выдохнуть.\nЧто накопилось?"
+      "Вижу, оплата прошла ✅\nТеперь можно выдохнуть.\nЧто накопилось?"
     );
 
     return res.status(200).send("ok");
@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
     console.error("YOOKASSA_WEBHOOK_ERROR:", error);
     return res.status(200).send("ok");
   }
-}
+};
 
 async function getUserByTelegramId(telegramId) {
   const rows = await sbFetch(
@@ -60,13 +60,10 @@ async function getUserByTelegramId(telegramId) {
 }
 
 async function updateUserAccess(telegramId, fields) {
-  await sbFetch(
-    `/users?telegram_id=eq.${encodeURIComponent(String(telegramId))}`,
-    {
-      method: "PATCH",
-      body: fields,
-    }
-  );
+  await sbFetch(`/users?telegram_id=eq.${encodeURIComponent(String(telegramId))}`, {
+    method: "PATCH",
+    body: fields,
+  });
 }
 
 async function sendTelegramMessage(chatId, text) {
