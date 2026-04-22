@@ -128,10 +128,10 @@ const startPayload = text.startsWith("/start")
 
     const user = await getUser(telegramId);
 
-    if (!user) {
-      await sendMessage(chatId, "Не смогла найти пользователя в базе. Попробуй ещё раз.");
-      return res.status(200).send("ok");
-    }
+  if (!user) {
+  await createUser(telegramId);
+  user = await getUser(telegramId);
+}
 
     if (user.pending_action === "await_code") {
       await handleCodeInput({
