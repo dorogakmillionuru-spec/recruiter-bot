@@ -902,10 +902,11 @@ async function sbFetch(path, options = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(`SUPABASE_ERROR ${method} ${path}: ${err}`);
-  }
+ if (!response.ok) {
+  const err = await response.text();
+  console.log("SUPABASE ERROR IGNORED:", err);
+  return [];
+}
 
   if (countOnly) {
     const contentRange = response.headers.get("content-range") || "0/0";
