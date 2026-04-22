@@ -86,20 +86,10 @@ export default async function handler(req, res) {
     const username = message.from?.username || "";
     const text = (message.text || "").trim();
 
- if (text === "/start") {
+if (text === "/start") {
   await sendMessage(chatId, "Я здесь. Напиши, что у тебя происходит.");
-
-  const reply = await getAIResponse({
-    text: "Привет",
-    firstName,
-    username,
-    telegramId
-  });
-
-  await sendMessage(chatId, reply);
-
-  return res.status(200).send("ok");
 }
+    
 const startPayload = text.startsWith("/start") 
   ? text.replace("/start", "").trim() 
   : "";
