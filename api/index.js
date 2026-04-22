@@ -430,7 +430,6 @@ function buildSystemPrompt({ firstName, username, telegramId, mentorName, userRe
   return (
     SYSTEM_PROMPT_BEFORE_REF +
     userRefLink +
-    SYSTEM_PROMPT_AFTER_REF +
     "\n\n" +
     TECH_PROMPT.replaceAll("{{USER_NAME}}", safeName)
       .replaceAll("{{USER_USERNAME}}", safeUsername)
