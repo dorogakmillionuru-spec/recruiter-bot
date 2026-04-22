@@ -278,7 +278,7 @@ const SYSTEM_PROMPT_BEFORE_REF = `
 
 Тебе это покажет наставник.
 `;
-
+const SYSTEM_PROMPT = SYSTEM_PROMPT_BEFORE_REF;
 const TECH_PROMPT = `
 Технический контекст:
 - Ты работаешь внутри Telegram-бота "РЕКРУТЕР".
