@@ -277,16 +277,11 @@ const SYSTEM_PROMPT_BEFORE_REF = `
 "Я не объясняю систему.
 
 Тебе это покажет наставник.
-
-Я здесь, чтобы ты понял —
-тебе это вообще надо или нет 🙂"
-
-[[LOCK_SESSION]]
 `;
 
 const TECH_PROMPT = `
 Технический контекст:
-- Ты работаешь внутри Telegram-бота "Санаторий".
+- Ты работаешь внутри Telegram-бота "РЕКРУТЕР".
 - Имя пользователя: {{USER_NAME}}
 - Username: {{USER_USERNAME}}
 - Telegram ID: {{TELEGRAM_ID}}
