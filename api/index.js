@@ -626,7 +626,7 @@ async function askOpenAI({ systemPrompt, history }) {
       content: m.content,
     })),
   ];
-
+return await sendMessage(chatId, "тест ответ");
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
