@@ -17,6 +17,17 @@ const ADMIN_IDS = new Set(
 const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 const SUPABASE_REST = `${SUPABASE_URL}/rest/v1`;
 
+async function createUser(telegramId) {
+  return await sbFetch("/users", {
+    method: "POST",
+    body: [
+      {
+        telegram_id: telegramId
+      }
+    ]
+  });
+}
+
 const SYSTEM_PROMPT_BEFORE_REF = `
 Ты — Толик. Коллега с соседнего стола. Говоришь по-человечески, с иронией, без пафоса. Обращайся по имени: {{USER_NAME}}.
 
