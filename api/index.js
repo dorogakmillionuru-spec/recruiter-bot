@@ -88,7 +88,6 @@ export default async function handler(req, res) {
 
     if (text === "/start") {
   await sendMessage(chatId, "Я здесь. Напиши, что у тебя происходит.");
-  return res.status(200).send("ok");
 }
     
 const startPayload = text.startsWith("/start") 
