@@ -89,7 +89,13 @@ export default async function handler(req, res) {
     if (text === "/start") {
   await sendMessage(chatId, "Я здесь. Напиши, что у тебя происходит.");
 }
-    
+ await sendToOpenAI({
+  chatId,
+  telegramId,
+  text: "Привет",
+  firstName,
+  username
+});   
 const startPayload = text.startsWith("/start") 
   ? text.replace("/start", "").trim() 
   : "";
