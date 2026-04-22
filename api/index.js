@@ -137,7 +137,7 @@ const startPayload = text.startsWith("/start")
       }
     }
 
-    const user = await getUser(telegramId);
+    let user = await getUser(telegramId);
 
   if (!user) {
   await createUser(telegramId);
